@@ -1,0 +1,43 @@
+{
+  "flights": [
+    {
+      "departureDate": "15 Mar 2026",
+      "departureTime": "08:30",
+      "flightNumber": "SV 812",
+      "groupRep": "Sheikh Ahmad Al-Farsi"
+    },
+    {
+      "departureDate": "15 Mar 2026",
+      "departureTime": "11:45",
+      "flightNumber": "SV 814",
+      "groupRep": "Sheikh Omar Bakri"
+    },
+    {
+      "departureDate": "28 Mar 2026",
+      "departureTime": "14:00",
+      "flightNumber": "SV 821",
+      "groupRep": "Sheikh Ahmad Al-Farsi"
+    },
+    {
+      "departureDate": "28 Mar 2026",
+      "departureTime": "17:30",
+      "flightNumber": "SV 823",
+      "groupRep": "Sheikh Omar Bakri"
+    }
+  ],
+  "reminder": "Please arrive at the airport at least 3 hours before your scheduled departure time. Ensure you have all required travel documents, your passport, and boarding passes ready. Contact your group representative if you have any questions.",
+  "hotels": {
+    "makkah": {
+      "name": "Nawarat As Shams 3",
+      "address": "Ibrahim Al Khalil St, Makkah, Saudi Arabia",
+      "lat": 21.4195,
+      "lng": 39.8271
+    },
+    "madinah": {
+      "name": "Diwan Al Madinah",
+      "address": "King Fahd Branch Rd, Madinah, Saudi Arabia",
+      "lat": 24.4732,
+      "lng": 39.6108
+    }
+  }
+}
