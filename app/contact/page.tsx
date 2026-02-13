@@ -106,7 +106,7 @@ export default function ContactPage() {
               <div className="relative">
                 <div className="overflow-hidden rounded-xl border-4 border-primary/20 bg-white p-4 shadow-lg">
                   <img
-                    src="/images/qr.png"
+                    src="/images/qr-code.png"
                     alt="QR Code to Contact Page"
                     width={240}
                     height={240}
@@ -118,7 +118,7 @@ export default function ContactPage() {
               <div className="flex flex-col items-center gap-3 sm:flex-row">
                 <Button asChild size="lg" className="font-medium">
                   <a
-                    href="/images/qr.png"
+                    href="/images/qr-code.png"
                     download="umrah-contact-qr.png"
                   >
                     <Download className="mr-2 h-4 w-4" />
