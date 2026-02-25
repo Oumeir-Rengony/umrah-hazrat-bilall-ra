@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { updateReminder } from "@/app/admin/actions";
+import { updateReminder } from "@/app/(root)/admin/actions";
 import { useRouter } from "next/navigation";
 
 export function ReminderEditor({
@@ -20,6 +20,7 @@ export function ReminderEditor({
 }: {
   initialReminder: string;
 }) {
+
   const [reminder, setReminder] = useState(initialReminder);
   const [isPending, startTransition] = useTransition();
   const [message, setMessage] = useState<{

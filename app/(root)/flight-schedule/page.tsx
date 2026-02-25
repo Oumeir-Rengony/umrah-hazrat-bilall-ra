@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getFlightData } from "@/app/admin/actions";
+import { getFlightData } from "@/app/(root)/admin/actions";
 
 export const metadata: Metadata = {
   title: "Flight Schedule",

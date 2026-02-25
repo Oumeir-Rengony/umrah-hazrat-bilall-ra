@@ -21,11 +21,9 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-20 items-center justify-center rounded-lg">
-            <img src="/images/logo.png" alt="Umrah Guide Logo" />
-          </div>
+          <img src="./images/logo.png" alt="Umrah Guide Logo" className="w-16" />
           <span className="text-lg font-semibold tracking-tight text-foreground">
-            Umrah Guide
+            Hazrat Bilall Institute
           </span>
         </Link>
 

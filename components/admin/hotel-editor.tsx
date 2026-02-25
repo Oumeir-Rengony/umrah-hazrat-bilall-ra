@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { Hotel } from "@/app/admin/actions";
-import { updateHotel } from "@/app/admin/actions";
+import type { Hotel } from "@/app/(root)/admin/actions";
+import { updateHotel } from "@/app/(root)/admin/actions";
 import { useRouter } from "next/navigation";
 
 interface HotelEditorProps {

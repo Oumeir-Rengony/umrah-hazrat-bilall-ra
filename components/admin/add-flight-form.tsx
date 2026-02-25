@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { addFlight } from "@/app/admin/actions";
+import { addFlight } from "@/app/(root)/admin/actions";
 import { useRouter } from "next/navigation";
 
 export function AddFlightForm() {
