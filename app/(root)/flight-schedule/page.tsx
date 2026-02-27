@@ -11,7 +11,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getFlightData } from "@/app/(root)/admin/actions";
+import { ActionResult, Flight, getFlightData } from "@/app/(root)/admin/actions";
+import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Flight Schedule",
@@ -19,12 +21,14 @@ export const metadata: Metadata = {
     "View your Umrah flight departure dates, times, and group representatives.",
 };
 
-export const dynamic = "force-dynamic";
+
+const reminder = "Please arrive at the airport at least 3 hours before your scheduled departure time. Ensure you have all required travel documents, your passport, and boarding passes ready. Contact your group representative if you have any questions.";
+
 
 export default async function FlightSchedulePage() {
-  const data = await getFlightData();
-  const flights = data.flights;
-  const reminder = data.reminder;
+
+  const flightsPromise = getFlightData();
+
   return (
     <>
       <PageHeader
@@ -52,25 +56,9 @@ export default async function FlightSchedulePage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {flights.map((flight, i) => (
-                    <TableRow key={i} className="border-border">
-                      <TableCell className="font-medium text-foreground">
-                        {flight.departureDate}
-                      </TableCell>
-                      <TableCell className="text-foreground">
-                        <span className="inline-flex items-center gap-1.5">
-                          <Clock className="h-3.5 w-3.5 text-muted-foreground" />
-                          {flight.departureTime}
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-0.5 text-sm font-medium text-primary">
-                          {flight.flightNumber}
-                        </span>
-                      </TableCell>
-                      <TableCell className="text-foreground">{flight.groupRep}</TableCell>
-                    </TableRow>
-                  ))}
+                  <Suspense>
+                    <DesktopFlightTable flightsPromise={flightsPromise} />
+                  </Suspense>
                 </TableBody>
               </Table>
             </CardContent>
@@ -78,29 +66,9 @@ export default async function FlightSchedulePage() {
 
           {/* Mobile Cards */}
           <div className="flex flex-col gap-3 md:hidden">
-            {flights.map((flight, i) => (
-              <Card key={i} className="border-border bg-card">
-                <CardContent className="p-4">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <p className="text-sm text-muted-foreground">
-                        {flight.departureDate}
-                      </p>
-                      <p className="mt-1 text-lg font-semibold text-foreground">
-                        {flight.departureTime}
-                      </p>
-                    </div>
-                    <span className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-sm font-medium text-primary">
-                      {flight.flightNumber}
-                    </span>
-                  </div>
-                  <div className="mt-3 flex items-center gap-2 border-t border-border pt-3 text-sm text-muted-foreground">
-                    <Plane className="h-3.5 w-3.5" />
-                    <span>{flight.groupRep}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            <Suspense>
+              <MobileFlight flightsPromise={flightsPromise} />
+            </Suspense>
           </div>
 
           {/* Warning Banner */}
@@ -115,4 +83,85 @@ export default async function FlightSchedulePage() {
       </section>
     </>
   );
+}
+
+
+
+async function DesktopFlightTable({
+  flightsPromise
+}: {
+  flightsPromise: Promise<ActionResult<Flight[]>>
+}) {
+
+  const flightRes = await flightsPromise;
+
+  if (!flightRes.success) {
+    return notFound();
+  }
+
+  return (
+    <>
+      {flightRes.data?.map((flight, i) => (
+        <TableRow key={flight._id} className="border-border">
+          <TableCell className="font-medium text-foreground">
+            {flight.departureDate}
+          </TableCell>
+          <TableCell className="text-foreground">
+            <span className="inline-flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 text-muted-foreground" />
+              {flight.departureTime}
+            </span>
+          </TableCell>
+          <TableCell>
+            <span className="inline-flex items-center rounded-md bg-primary/10 px-2 py-0.5 text-sm font-medium text-primary">
+              {flight.flightNumber}
+            </span>
+          </TableCell>
+          <TableCell className="text-foreground">{flight.groupRep}</TableCell>
+        </TableRow>
+      ))}
+    </>
+  )
+}
+
+
+async function MobileFlight({
+  flightsPromise
+}: {
+  flightsPromise: Promise<ActionResult<Flight[]>>
+}) {
+
+  const flightRes = await flightsPromise;
+
+  if (!flightRes.success) {
+    return notFound();
+  }
+
+  return (
+    <>
+      {flightRes?.data?.map((flight, i) => (
+        <Card key={flight._id} className="border-border bg-card">
+          <CardContent className="p-4">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">
+                  {flight.departureDate}
+                </p>
+                <p className="mt-1 text-lg font-semibold text-foreground">
+                  {flight.departureTime}
+                </p>
+              </div>
+              <span className="inline-flex items-center rounded-md bg-primary/10 px-2.5 py-1 text-sm font-medium text-primary">
+                {flight.flightNumber}
+              </span>
+            </div>
+            <div className="mt-3 flex items-center gap-2 border-t border-border pt-3 text-sm text-muted-foreground">
+              <Plane className="h-3.5 w-3.5" />
+              <span>{flight.groupRep}</span>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </>
+  )
 }

@@ -1,12 +1,15 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/page-header";
-import { getFlightData } from "./actions";
-import { AdminFlightTable } from "@/components/admin/flight-table";
-import { ReminderEditor } from "@/components/admin/reminder-editor";
+import { getFlightData, getHotels } from "./actions";
 import { HotelEditor } from "@/components/admin/hotel-editor";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { FlightProvider } from "@/components/admin/flight-provider/flight-provider";
+import { AdminFlightCard } from "@/components/admin/flight-provider/flight-card";
+import { AdminFlightTable } from "@/components/admin/flight-provider/flight-table";
+import { AdminFlightTableSkeleton } from "@/components/admin/flight-provider/flight-table-skeleton";
 
 export const metadata: Metadata = {
   title: "Admin Panel",
@@ -25,7 +28,8 @@ export default async function AdminPage() {
     redirect("/login");
   }
 
-  const flights = await getFlightData();
+  const flightsPromise =  getFlightData();
+  const hotelsPromise =  getHotels();
 
   return (
     <>
@@ -37,16 +41,22 @@ export default async function AdminPage() {
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 lg:px-8">
           
           {/* Flight Management */}
-          <AdminFlightTable flights={flights} />
+          
+            {/* <AdminFlightTable flightsPromise={flightsPromise} /> */}
 
-          {/* Reminder Editor */}
-          {/* <ReminderEditor initialReminder={data.reminder} /> */}
+          <FlightProvider>
+            <AdminFlightCard>
+              <Suspense fallback={<AdminFlightTableSkeleton/> }>
+                <AdminFlightTable flightsPromise={flightsPromise} />
+              </Suspense>
+            </AdminFlightCard>
+          </FlightProvider>
+          
 
           {/* Hotel Editor */}
-          {/* <HotelEditor
-            makkahHotel={data.hotels.makkah}
-            madinahHotel={data.hotels.madinah}
-          /> */}
+          <Suspense>
+            <HotelEditor hotelsPromise={hotelsPromise} />
+          </Suspense>
         </div>
       </section>
     </>

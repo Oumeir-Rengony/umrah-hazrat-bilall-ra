@@ -31,7 +31,7 @@ export function AddFlightForm() {
       if (result.success) {
         setMessage({ type: "success", text: "Flight added successfully." });
         formRef.current?.reset();
-        router.refresh();
+        // router.refresh();
         setTimeout(() => setMessage(null), 3000);
       } else {
         setMessage({

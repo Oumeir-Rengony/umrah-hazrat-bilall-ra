@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { use, useState, useTransition } from "react";
 import { Trash2, Plane, Loader2, Pencil, CheckCircle2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -39,9 +39,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import type { Flight } from "@/app/(root)/admin/actions";
+import type { ActionResult, Flight } from "@/app/(root)/admin/actions";
 import { deleteFlight, updateFlight, addFlight } from "@/app/(root)/admin/actions";
-import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const EMPTY_FORM: Omit<Flight, "_id"> = {
@@ -52,11 +51,15 @@ const EMPTY_FORM: Omit<Flight, "_id"> = {
 };
 
 export function AdminFlightTable({
-  flights,
+  flightsPromise,
 }: {
-  flights: Flight[];
+  flightsPromise: Promise<ActionResult<Flight[]>>;
 }) {
-  const router = useRouter();
+  const flightRes = use(flightsPromise);
+
+
+  const flights = flightRes?.success ? flightRes.data : [];
+  
   const [isPending, startTransition] = useTransition();
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -116,8 +119,6 @@ export function AdminFlightTable({
               : "Flight updated successfully.",
         });
 
-        router.refresh();
-
         setTimeout(() => {
           setDialogOpen(false);
           setMessage(null);
@@ -141,7 +142,6 @@ export function AdminFlightTable({
       const result = await deleteFlight(deletingId);
 
       if (result.success) {
-        router.refresh();
         setDeletingId(null);
 
       } 

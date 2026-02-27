@@ -3,12 +3,13 @@ import { cn } from "@/lib/utils";
 interface PageHeaderProps {
   title: string;
   description?: string;
+  children?: React.ReactNode;
   className?: string;
 }
 
-export function PageHeader({ title, description, className }: PageHeaderProps) {
+export function PageHeader({ title, description, children, className }: PageHeaderProps) {
   return (
-    <div className={cn("border-b border-border bg-card py-12 lg:py-16", className)}>
+    <div className={cn("border-b border-border bg-card py-12", className)}>
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <h1 className="text-balance text-3xl font-bold tracking-tight text-foreground lg:text-4xl">
           {title}
@@ -18,6 +19,8 @@ export function PageHeader({ title, description, className }: PageHeaderProps) {
             {description}
           </p>
         )}
+
+        { children && <div>{ children }</div> }
       </div>
     </div>
   );
