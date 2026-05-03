@@ -20,44 +20,33 @@ export const navigation = [
   },
 ];
 
+
 // Contact / Guide data
 export const guides = [
   {
-    name: "Sheikh Ahmad Al-Farsi",
-    role: "Head Guide - Group A",
+    name: "Junaid Emambux",
+    role: "",
     phone: "+966501234567",
     avatar: null,
   },
   {
-    name: "Br. Yusuf Hassan",
-    role: "Assistant Guide - Group A",
+    name: "Parvez Emambuccus",
+    role: "",
     phone: "+966507654321",
     avatar: null,
   },
   {
-    name: "Sheikh Omar Bakri",
-    role: "Head Guide - Group B",
+    name: "Modassir Bocus",
+    role: "",
     phone: "+966509876543",
     avatar: null,
   },
   {
-    name: "Br. Ibrahim Malik",
-    role: "Assistant Guide - Group B",
+    name: "Waleed Emambux",
+    role: "",
     phone: "+966502345678",
     avatar: null,
-  },
-  {
-    name: "Sr. Fatima Zahra",
-    role: "Ladies Coordinator",
-    phone: "+966508765432",
-    avatar: null,
-  },
-  {
-    name: "Br. Khalid Noor",
-    role: "Emergency Contact",
-    phone: "+966503456789",
-    avatar: null,
-  },
+  }
 ];
 
 // Flight schedule data

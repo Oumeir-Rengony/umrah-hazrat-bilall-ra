@@ -61,9 +61,13 @@ export default function ContactPage() {
                       <CardTitle className="text-base text-foreground">
                         {guide.name}
                       </CardTitle>
-                      <p className="mt-0.5 text-sm text-muted-foreground">
-                        {guide.role}
-                      </p>
+                      {
+
+                        guide?.role &&
+                        <p className="mt-0.5 text-sm text-muted-foreground">
+                          {guide.role}
+                        </p>
+                      }
                     </div>
                   </CardHeader>
                   <CardContent>
