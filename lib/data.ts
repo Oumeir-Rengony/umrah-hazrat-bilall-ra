@@ -188,7 +188,7 @@ export const ziyaraahData: ZiyaraahCity[] = [
             name: "Jannat Ul Mu'alla",
             slug: "jannat-ul-mualla",
             description: "Sa foto la haut la montrer Jannatul Mu’alla, qabarastaan principale historique de Makkah ki situé à vallée l’est de Masjid al-Haram. Plusieurs membres de la famille du Prophète ﷺ et bocou ban Sahabah (رضي الله عنهم) entérés ici.<br><br>Sa bannes personalités suivants la entérés dan sa qabarastan la:<br><br>Ummul Mu’mineen Khadija (رضي الله عنها), premier madame du Prophète ﷺ<br><br>Qasim, pli grand garcon du Prophète ﷺ depuis so madame Khadija (رضي الله عنها); lin intekaal dans so l’enfance.<br><br>Abdullah, deuxième garcon du Prophète ﷺ depuis so madame Khadija (رضي الله عنها); li ti aussi connu comme Tahir et Tayyab.<br><br>Abu Talib - l’oncle du Prophète ﷺ<br><br>Abdul Muttalib - Dada du Prophète ﷺ",
-            image: "/images/ziyaraah/Jannatul-Mulla.jpg",
+            image: "/images/ziyaraah/jannatul-mulla.jpg",
           },
           {
             name: "Qabarastaan Al Shabeka",
