@@ -18,9 +18,14 @@ interface Props {
   params: Promise<{ city: string }>;
 }
 
-export async function generateStaticParams() {
-  return ziyaraahData.map((city) => ({ city: city.slug }));
-}
+export const dynamic = "force-static";
+
+export const dynamicParams = true
+
+
+// export async function generateStaticParams() {
+//   return ziyaraahData.map((city) => ({ city: city.slug }));
+// }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city: citySlug } = await params;
@@ -28,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!city) return { title: "Not Found" };
   return {
     title: `Ziyaraah - ${city.name}`,
-    description: `Explore the holy sites and places to visit in ${city.name} during your Umrah journey.`,
+    description: `Explore the holy sites and places to visit in ${city.name} during your Hajj/Umrah journey.`,
   };
 }
 

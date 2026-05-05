@@ -26,25 +26,31 @@ export const guides = [
   {
     name: "Junaid Emambux",
     role: "",
-    phone: "+966501234567",
+    phone: "59073410",
     avatar: null,
   },
   {
     name: "Parvez Emambuccus",
     role: "",
-    phone: "+966507654321",
+    phone: "57884185",
+    avatar: null,
+  },
+   {
+    name: "Bhai Taslim",
+    role: "",
+    phone: "57019883",
     avatar: null,
   },
   {
     name: "Modassir Bocus",
     role: "",
-    phone: "+966509876543",
+    phone: "58029067",
     avatar: null,
   },
   {
     name: "Waleed Emambux",
     role: "",
-    phone: "+966502345678",
+    phone: "58171840",
     avatar: null,
   }
 ];

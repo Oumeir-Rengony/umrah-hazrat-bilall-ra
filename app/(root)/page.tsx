@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Plane, MapPin, Phone, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -39,6 +38,9 @@ const quickLinks = [
   },
 ];
 
+export const dynamic = "force-static";
+
+
 export default function HomePage() {
   return (
     <>
@@ -58,7 +60,7 @@ export default function HomePage() {
             Bismillah ar-Rahman ar-Rahim
           </p>
           <h1 className="mt-4 max-w-3xl text-balance text-4xl font-bold tracking-tight text-primary-foreground lg:text-6xl">
-            Your Trusted Companion for a Blessed Umrah
+            Your Trusted Companion for a Blessed Hajj/Umrah
           </h1>
           <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-primary-foreground/85 lg:text-lg">
             Everything you need for your pilgrimage journey in one place.
@@ -89,11 +91,11 @@ export default function HomePage() {
               Welcome, Dear Pilgrim
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground lg:text-lg">
-              This application has been designed to make your Umrah journey as
+              This application has been designed to make your Hajj & Umrah journey as
               smooth and spiritually enriching as possible. Here you will find
               all the information you need, from flight schedules and hotel
               directions to detailed guides of the holy sites you will visit.
-              May Allah accept your Umrah and grant you a journey filled with
+              May Allah accept your Hajj & Umrah and grant you a journey filled with
               peace and blessings.
             </p>
           </div>

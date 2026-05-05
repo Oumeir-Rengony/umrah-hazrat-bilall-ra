@@ -3,10 +3,14 @@ import { PageHeader } from "@/components/page-header";
 import { douaCategories } from "@/lib/data";
 import { DouaCarousel } from "@/components/doua-carousel";
 
+
+export const dynamic = "force-static";
+
+
 export const metadata: Metadata = {
   title: "Du'a Collection",
   description:
-    "Essential supplications (Du'a) for your Umrah journey including Tawaf, Sa'i, Arafah, and travel.",
+    "Essential supplications (Du'a) for your Hajj/Umrah journey including Tawaf, Sa'i, Arafah, and travel.",
 };
 
 // const hajjDouas = douaCategories.filter((d) => d.category === "Hajj & Madinah");
@@ -17,7 +21,7 @@ export default function DouaPage() {
     <>
       <PageHeader
         title="Du'a Collection"
-        description="Essential supplications for your Umrah journey. Swipe through the cards to explore each du'a category."
+        description="Essential supplications for your Hajj/Umrah journey. Swipe through the cards to explore each du'a category."
       />
       <section className="bg-background py-12 lg:py-16">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">

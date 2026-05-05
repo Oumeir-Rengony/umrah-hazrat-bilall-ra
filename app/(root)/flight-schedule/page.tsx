@@ -15,10 +15,13 @@ import { ActionResult, Flight, getFlightData } from "@/app/(root)/admin/actions"
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+export const dynamic = "force-static";
+
+
 export const metadata: Metadata = {
   title: "Flight Schedule",
   description:
-    "View your Umrah flight departure dates, times, and group representatives.",
+    "View your Hajj/Umrah flight departure dates, times, and group representatives.",
 };
 
 

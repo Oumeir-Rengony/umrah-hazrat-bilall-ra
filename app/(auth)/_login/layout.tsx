@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Umrah Guide - Your Trusted Pilgrimage Companion",
-    template: "%s | Umrah Guide",
+    default: "Hajj & Umrah Guide - Your Trusted Pilgrimage Companion",
+    template: "%s | Hajj & Umrah Guide",
   },
   description:
-    "Your trusted companion for a blessed Umrah journey. Flight schedules, hotel locations, Ziyaraah guides, and contact information for your group guides.",
+    "Your trusted companion for a blessed Hajj/Umrah journey. Flight schedules, hotel locations, Ziyaraah guides, and contact information for your group guides.",
 };
 
 export const viewport: Viewport = {

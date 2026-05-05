@@ -21,7 +21,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <img src="./images/logo.png" alt="Umrah Guide Logo" className="w-16" />
+          <img src="/images/logo.png" alt="Hajj/Umrah Guide Logo" className="w-16" />
           <span className="text-lg font-semibold tracking-tight text-foreground">
             Hazrat Bilall Institute
           </span>

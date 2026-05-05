@@ -5,7 +5,7 @@ import { getFlightData, getHotels } from "./actions";
 import { HotelEditor } from "@/components/admin/hotel-editor";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { FlightProvider } from "@/components/admin/flight-provider/flight-provider";
 import { AdminFlightCard } from "@/components/admin/flight-provider/flight-card";
 import { AdminFlightTable } from "@/components/admin/flight-provider/flight-table";
@@ -16,9 +16,13 @@ export const metadata: Metadata = {
   description: "Manage departure details and reminders.",
 };
 
-export const dynamic = "force-dynamic";
+//temporary static
+export const dynamic = "force-static";
 
 export default async function AdminPage() {
+
+  //block page temporary
+  return notFound();
 
   const session = await auth.api.getSession({
     headers: await headers() // you need to pass the headers object.

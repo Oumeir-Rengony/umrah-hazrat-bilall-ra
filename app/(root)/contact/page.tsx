@@ -13,10 +13,12 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { guides } from "@/lib/data";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Contact Your Guides",
   description:
-    "Contact information for your Umrah group guides. Call your guide instantly.",
+    "Contact information for your Hajj & Umrah group guides. Call your guide instantly.",
 };
 
 export default function ContactPage() {
@@ -123,7 +125,7 @@ export default function ContactPage() {
                 <Button asChild size="lg" className="font-medium">
                   <a
                     href="/images/qr-code.png"
-                    download="umrah-contact-qr.png"
+                    download="Hajj-Umrah-contact-qr.png"
                   >
                     <Download className="mr-2 h-4 w-4" />
                     Download QR Code

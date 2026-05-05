@@ -8,13 +8,13 @@ export function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2">
-              <img src="./images/logo.png" alt="Umrah Guide Logo" className="w-16" />
+              <img src="/images/logo.png" alt="Hajj/Umrah Guide Logo" className="w-16" />
               <span className="text-lg font-semibold text-foreground">
                 Hazrat Bilall Institute
               </span>
             </Link>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Your trusted companion for a blessed Umrah journey. We are here to
+              Your trusted companion for a blessed Hajj/Umrah journey. We are here to
               guide and assist you every step of the way.
             </p>
           </div>

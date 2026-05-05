@@ -14,10 +14,12 @@ import { getHotels, Hotel as HotelType } from "../admin/actions";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
+export const dynamic = "force-static";
+
 
 export const metadata: Metadata = {
   title: "Makkah & Madinah Hotels",
-  description: "Discover your accommodations in Makkah and Madinah during your Umrah journey, with hotel details and location maps.",
+  description: "Discover your accommodations in Makkah and Madinah during your Hajj/Umrah journey, with hotel details and location maps.",
 };
 
 
@@ -51,7 +53,7 @@ export function Hotel({
       <div id={hotel?.city}>
         <PageHeader
           title={`${hotel?.name}`}
-          description={`Your accommodation in ${hotel?.city} during your Umrah journey.`}
+          description={`Your accommodation in ${hotel?.city} during your Hajj/Umrah journey.`}
           className={cn("bg-[unset]", index > 0 ? "border-t": "")}
         />
 
@@ -62,6 +64,8 @@ export function Hotel({
                 <div className="lg:col-span-2">
                     <Card className="overflow-hidden border-border">
                       <div className="aspect-[16/10] w-full">
+                        {
+                          hotel?.gMapUrl ? (
                           <iframe
                             src={hotel?.gMapUrl}
                             width="100%"
@@ -72,6 +76,14 @@ export function Hotel({
                             referrerPolicy="no-referrer-when-downgrade"
                             title={`Map showing ${hotel?.name} in ${hotel?.city}`}
                           />
+                          ) : (
+                            <div className="flex h-full items-center justify-center bg-muted">
+                              <p className="text-xl text-muted-foreground">
+                                Map not available
+                              </p>
+                            </div>
+                          )
+                        }
                       </div>
                     </Card>
                 </div>
@@ -96,16 +108,19 @@ export function Hotel({
                             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                             <span>{hotel?.address}</span>
                           </div>
-                          <Button asChild className="w-full">
-                            <a
-                                href={hotel?.gMapUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Navigation className="mr-2 h-4 w-4" />
-                                Open in Google Maps
-                            </a>
-                          </Button>
+                          {
+                            hotel?.gMapUrl &&
+                            <Button asChild className="w-full">
+                              <a
+                                  href={hotel?.gMapUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                              >
+                                  <Navigation className="mr-2 h-4 w-4" />
+                                  Open in Google Maps
+                              </a>
+                            </Button>
+                          }
                       </CardContent>
                     </Card>
 

@@ -166,7 +166,7 @@ export async function getHotels():Promise<ActionResult<Hotel[]>>{
 
   try {
     const hotels = await HotelModel.find()
-      .sort({ createdAt: 1 }) // optional, for deterministic output
+      .sort({ createdAt: "desc" }) // optional, for deterministic output
       .lean()
       .exec();
 

@@ -10,17 +10,21 @@ interface Props {
   params: Promise<{ city: string; place: string }>;
 }
 
-export async function generateStaticParams() {
-  const paths: { city: string; place: string }[] = [];
-  for (const city of ziyaraahData) {
-    for (const cat of city.categories) {
-      for (const place of cat.places) {
-        paths.push({ city: city.slug, place: place.slug });
-      }
-    }
-  }
-  return paths;
-}
+export const dynamic = "force-static";
+
+export const dynamicParams = true
+
+// export async function generateStaticParams() {
+//   const paths: { city: string; place: string }[] = [];
+//   for (const city of ziyaraahData) {
+//     for (const cat of city.categories) {
+//       for (const place of cat.places) {
+//         paths.push({ city: city.slug, place: place.slug });
+//       }
+//     }
+//   }
+//   return paths;
+// }
 
 function findPlace(citySlug: string, placeSlug: string) {
   const city = ziyaraahData.find((c) => c.slug === citySlug);
