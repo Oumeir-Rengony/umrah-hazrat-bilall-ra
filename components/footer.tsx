@@ -1,6 +1,12 @@
+import { ActionResult, getHotels, Hotel as HotelType } from "@/app/(root)/admin/actions";
 import Link from "next/link";
 
-export function Footer() {
+export async function Footer({
+  hotelsPromise
+}: {
+  hotelsPromise: Promise<ActionResult<HotelType[]>>
+}) {
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
@@ -48,27 +54,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-foreground">
               Hotel Locations
             </h3>
-            <ul className="mt-3 flex flex-col gap-2">
-              {[
-                {
-                  name: "Makkah - Nawarat As Shams 3",
-                  href: "/hotels/makkah",
-                },
-                {
-                  name: "Madinah - Diwan Al Madinah",
-                  href: "/hotels/madinah",
-                },
-              ].map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <HotelLinks hotelsPromise={hotelsPromise} />
           </div>
         </div>
 
@@ -79,5 +65,32 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+
+async function HotelLinks({ hotelsPromise }: {  hotelsPromise: Promise<ActionResult<HotelType[]>> }) {
+
+  const hotelsResult = await hotelsPromise;
+
+  if(!hotelsResult.success || !hotelsResult.data) {
+    return null;
+  }
+
+  const hotels = hotelsResult.data;
+
+  return (
+    <ul className="mt-3 flex flex-col gap-2">
+      {hotels.map((link: HotelType) => (
+        <li key={link.name}>
+          <Link
+            href={`/hotels#${link.city}`}
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {link.name} - {link.city}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }

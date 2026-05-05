@@ -5,6 +5,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
 import "@/styles/globals.css";
+import { getHotels } from "./admin/actions";
 
 const geistSans = Geist({
   subsets: ["latin"],
@@ -35,6 +36,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const hotelsPromise =  getHotels();
+
   return (
     <html lang="en">
       <body
@@ -43,7 +47,7 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
-          <Footer />
+          <Footer hotelsPromise={hotelsPromise}/>
         </div>
       </body>
     </html>
