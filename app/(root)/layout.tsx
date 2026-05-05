@@ -23,6 +23,17 @@ export const metadata: Metadata = {
   },
   description:
     "Your trusted companion for a blessed Hajj & Umrah journey. Flight schedules, hotel locations, Ziyaraah guides, and contact information for your group guides.",
+    openGraph: {
+      title: "Hajj & Umrah Guide - Your Trusted Pilgrimage Companion",
+      description:
+        "Your trusted companion for a blessed Hajj & Umrah journey. Flight schedules, hotel locations, Ziyaraah guides, and contact information for your group guides.",
+      images: [
+        {
+          url: "/images/logo.png",
+          alt: "Hajj & Umrah Guide - Your Trusted Pilgrimage Companion",
+        },
+      ],
+    }
 };
 
 export const viewport: Viewport = {
